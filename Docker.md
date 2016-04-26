@@ -34,7 +34,7 @@ PS:RUN先于CMD/ENTRYPOINTRUN命令覆盖CMD
 >Introduction Command  usage and example;
 ### FROM 
 
-    用法：ubuntu:xenial or tag (daocloud.io/library:ubuntu or tag) 
+    用法：ubuntu/xenial:tag (daocloud.io/library:ubuntu or tag) 
 
 ### MAINTAINER
 
