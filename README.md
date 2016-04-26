@@ -1,2 +1,2 @@
 # Notes
-Notes
+学习记录存储为MarkDown文档便于日后查看
