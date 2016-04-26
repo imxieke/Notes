@@ -47,6 +47,12 @@ PS:RUN先于CMD/ENTRYPOINTRUN命令覆盖CMD
     用于设置环境变更
     使用此dockerfile生成的image新建container，可以通过 docker inspect CONTAINER ID  看到这个环境变量
     也可以通过在docker run时设置或修改环境变量
+    指定一个环境变量，会被后续 RUN 指令使用，并在容器运行时保持。
+    ###Example###
+    ENV PG_MAJOR 9.3
+    ENV PG_VERSION 9.3.4
+    RUN curl -SL http://example.com/postgres-$PG_VERSION.tar.xz | tar -xJC /usr/src/postgress && …
+    ENV PATH /usr/local/postgres-$PG_MAJOR/bin:$PATH
 
 ### ADD
 
