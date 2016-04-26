@@ -103,7 +103,12 @@ PS:RUN先于CMD/ENTRYPOINTRUN命令覆盖CMD
 
 
 ### CMD
->和RUN命令相似，CMD可以用于执行特定的命令。和RUN不同的是，这些命令不是在镜像构建的过程中执行的，而是在用镜像构建容器后被调用。
+
+    和RUN命令相似，CMD可以用于执行特定的命令。和RUN不同的是，这些命令不是在镜像构建的过程中执行的，而是在用镜像构建容器后被调用。支持三种格式
+
+    CMD ["executable","param1","param2"] 使用 exec 执行，推荐方式；
+    CMD command param1 param2 在 /bin/sh 中执行，提供给需要交互的应用；
+    CMD ["param1","param2"] 提供给 ENTRYPOINT 的默认参数；
 
     #Usage 1: CMD application "argument", "argument", ..
     CMD "echo" "Hello docker!"
