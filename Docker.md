@@ -111,8 +111,17 @@ PS:RUN先于CMD/ENTRYPOINTRUN命令覆盖CMD
 
 ### ONBUILD
 
-    #usage:ONBUILD [INSTRUCTION] 。
-
+    #usage:ONBUILD [INSTRUCTION]
+    #用途：配置当所创建的镜像作为其它新创建镜像的基础镜像时，所执行的操作指令。
+    例如，Dockerfile使用如下的内容创建了镜像 image-A 。
+    ONBUILD ADD . /app/src
+    ONBUILD RUN /usr/local/bin/python-build --dir /app/src
+    如果基于A创建新的镜像时，新的Dockerfile中使用 FROM image-A 指定基础镜像时，会自动执行 ONBUILD 指令内容，等价于在后面添加了两条指令。
+    FROM image-A
+    #Automatically run the following
+    ADD . /app/src
+    RUN /usr/local/bin/python-build --dir /app/src
+    使用 ONBUILD 指令的镜像，推荐在标签中注明，例如 ruby:1.9-onbuild 。
 
 # Dockerfile Example
 ```
